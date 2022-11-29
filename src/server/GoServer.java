@@ -15,7 +15,6 @@ public class GoServer {
     private Socket clientSocket;
     private final int maxClientsCount;
     private ArrayList<GoClientHandler> clientHandlers;
-    private ConnectionChecker connectionChecker;
 
     public GoServer(int port, int maxClientsCount) {
         this.port = port;
@@ -24,8 +23,6 @@ public class GoServer {
 
     public void start() {
         clientHandlers = new ArrayList<GoClientHandler>();
-        connectionChecker = new ConnectionChecker(clientHandlers);
-        connectionChecker.start();
         try {
             serverSocket = new ServerSocket(port);
             System.out.println("Server listening to port " + port + ".");

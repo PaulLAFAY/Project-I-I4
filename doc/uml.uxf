@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <help_text>Space for diagram notes</help_text>
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>360</y>
+      <w>135</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>client::AppClient
+--
++sc = new Scanner(System.in): Scanner
+--
++main(String args[]): void
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>475</x>
+      <y>280</y>
+      <w>210</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>client::GoClient
+--
+-user: User
+-board: Board
+-debug: boolean
+--
++GoClient(Socket socket, String name, final boolean debug): ctor
+#newMessage(String message): void
+-newCommandMessage(String command): void
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>740</x>
+      <y>455</y>
+      <w>340</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>commons::Board
+--
++SEPARATOR_1 = "-": String
++SEPARATOR_2 = "\t": String
+-stones: Stone[][]
+-chains: ArrayList&lt;Chain&gt;
+-debug: boolean
+--
++Board(final boolean debug): ctor
++toString(): String
++print(): void
++updateBoard(String command): void
++setStone(Coordonates coord, int turn): void
++getStone(Coordonates coord): Stone
++parseBoard(): void
+-setNeighbours(): void
+-setFreedoms(): void
+-setChains(): void
+-noNeighbour(Stone[][] stoneAlt, Coordonates cursor, ArrayList&lt;Coordonates&gt; cursorPile): Coordonates
+-oneNeighbour(Stone[][] stoneAlt, Coordonates cursor): Coordonates
+-manyNeighbour(Stone[][] stoneAlt, Coordonates cursor, ArrayList&lt;Coordonates&gt; cursorPile): Coordonates
+-moveCursor(Stone[][] stoneAlt, Coordonates cursor): Coordonates
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>970</x>
+      <y>245</y>
+      <w>100</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>commons::Chain
+--
+-stones: ArrayList&lt;Stone&gt;
+-nbFreedoms: int
+-isComplete: boolean
+--
++Chain(): ctor
++addStone(Stone stone): void
++isComplete(): boolean
++setComplete(): void
++getNbStone(): int
++getNbfreedoms(): int
++getStone(int index): Stone
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>210</y>
+      <w>150</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>commons::Coordonates
+--
++COORD_SEPARATOR = ";": String
+-column: String
+-line: String
+-x: int
+-y: int
+--
++Coordonates(String command): ctor
++Coordonates(int x, int y): ctor
++Coordonates(String column, String line): ctor
++toString(): String
++getColumn(): String
++getLine(): String
++getIColumn(): int
++getILine(): int
++getX(): int
++getY(): int
++setX(int x): void
++setY(int y): void
++setXY(int x, int y): void
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1130</x>
+      <y>205</y>
+      <w>170</w>
+      <h>265</h>
+    </coordinates>
+    <panel_attributes>commons::Stone
+--
++black = "X": String
++white = "O": String
++free = " ": String
++UP = 0: int
++RIGHT = 1: int
++DOWN = 2: int
++LEFT = 3: int
+-coordonates: Coordonates
+-color: String
+-nbNeighbour: int
+-neighbours[]: boolean
+-freedomDegrees: int
+-freedoms[]: boolean
+-isChained: boolean
+--
++Stone(Coordonates coordonates): ctor
++Stone(String color, Coordonates coordonates): ctor
++toString(): String
++getCoordonates(): Coordonates
++getColor(): String
++resetStats(): void
++resetStone(): void
++setNeighbour(int direction, boolean bool): void
++getNbNeighbour(): int
++setFreedom(int direction): void
++getNbfreedomDegrees(): int
++isChained(): boolean
++setChained(boolean bool): void
++hasNeighbour(int direction): boolean
++getNeighbours(int index): boolean
++getFreedoms(int index): boolean
++copy(Stone stone): void
+
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>655</y>
+      <w>100</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>commons::User
+--
+-nbUser = 0: int
+-name: String
+-id: int
+--
++User(): ctor
++User(String name): ctor
++getID(): int
++getName(): String
++setName(String name): void
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>465</x>
+      <y>260</y>
+      <w>230</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>client
+bg=none
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>725</x>
+      <y>175</y>
+      <w>595</w>
+      <h>590</h>
+    </coordinates>
+    <panel_attributes>commons
+bg=none
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>155</x>
+      <y>250</y>
+      <w>145</w>
+      <h>155</h>
+    </coordinates>
+    <panel_attributes>tcp::TCPCommand
+--
++parseCommand(String command): String[]
++asw(): String
++asw(String str): String
++exit(): String
++isConnected(): String
++isConnected(boolean bool): String
++setUserInfo(): String
++setUserInfo(User user): String
++getNbClient(): String
++getNbClient(int nbClient): String
++startParty(): String
++startParty(boolean bool): String
++sendBoard(): String
++sendBoard(Board board): String
++yourTurn(): String
++sendAction(): String
++sendAction(Coordonates coord): String
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>305</x>
+      <y>250</y>
+      <w>125</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>/tcp::TCPHandler/
+--
+-socket: Socket
+-in: BufferedReader
+-out: PrintWriter
+--
+#TCPHandler(Socket socket): ctor
+#close(): void
++send(String message): void
++isClosed(): boolean
++run(): void
+#newMessage(String message): void
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>150</x>
+      <y>235</y>
+      <w>285</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>tcp
+bg=none
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>515</x>
+      <y>595</y>
+      <w>90</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>server::AppServer
+--
++main(String args[]): void
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>545</y>
+      <w>285</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>server::GoClientHandler
+--
+-clientHandlers: ArrayList&lt;GoClientHandler&gt;
+-user: User
+-party: GoParty
+--
++GoClientHandler(Socket clientSocket, ArrayList&lt;GoClientHandler&gt; clientHandlers): ctor
+#newMessage(String message): void
+-newCommandMessage(String command): void
++broadcastMessage(String message): void
++broadcastCommand(String command): void
++broadcastCommand(String command, GoClientHandler ignoredClientHandler): void
++setParty(GoParty party): void
++getUser(): User
++newAction(String command): void
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>460</y>
+      <w>195</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>server::GoParty
+--
+-board: Board
+-turn: int
+--
++GoParty(ArrayList&lt;GoClientHandler&gt; clientHandlers): ctor
++getBoard(): Board
++nextTurn(GoClientHandler clientHandler): void
++getTurn(): int
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>485</x>
+      <y>470</y>
+      <w>150</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>server::GoServer
+--
+-serverSocket: ServerSocket
+-port: int
+-clientSocket: Socket
+-maxClientsCount: int
+-clientHandlers: ArrayList&lt;GoClientHandler&gt;
+--
++GoServer(int port, int maxClientsCount): ctor
++start(): void
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>150</x>
+      <y>435</y>
+      <w>500</w>
+      <h>245</h>
+    </coordinates>
+    <panel_attributes>server
+bg=none
+group=group-9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>460</y>
+      <w>150</w>
+      <h>225</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+group=group-9</panel_attributes>
+    <additional_attributes>10.0;400.0;10.0;430.0;120.0;430.0;120.0;10.0;280.0;10.0;280.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>555</x>
+      <y>540</y>
+      <w>15</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+group=group-9</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>355</x>
+      <y>525</y>
+      <w>15</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+group=group-9</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>235</y>
+      <w>195</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=group-9</panel_attributes>
+    <additional_attributes>10.0;210.0;10.0;370.0;110.0;370.0;110.0;10.0;370.0;10.0;370.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>340</y>
+      <w>15</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+group=group-9</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>410</y>
+      <w>175</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>
+group=group-9</panel_attributes>
+    <additional_attributes>10.0;270.0;10.0;20.0;330.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>465</x>
+      <y>430</y>
+      <w>365</w>
+      <h>335</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+group=group-9</panel_attributes>
+    <additional_attributes>710.0;620.0;710.0;650.0;490.0;650.0;490.0;10.0;10.0;10.0;10.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>650</x>
+      <y>250</y>
+      <w>70</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>
+group=group-9</panel_attributes>
+    <additional_attributes>120.0;370.0;120.0;10.0;10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>705</x>
+      <y>620</y>
+      <w>210</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+group=group-9</panel_attributes>
+    <additional_attributes>400.0;10.0;400.0;50.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>425</y>
+      <w>80</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>
+group=group-9</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1045</x>
+      <y>435</y>
+      <w>245</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+group=group-9</panel_attributes>
+    <additional_attributes>470.0;70.0;470.0;170.0;90.0;170.0;90.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1045</x>
+      <y>340</y>
+      <w>15</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+group=group-9</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1040</x>
+      <y>225</y>
+      <w>130</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+group=group-9</panel_attributes>
+    <additional_attributes>240.0;490.0;240.0;520.0;140.0;520.0;140.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>855</x>
+      <y>190</y>
+      <w>375</w>
+      <h>205</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+group=group-9</panel_attributes>
+    <additional_attributes>10.0;360.0;10.0;390.0;160.0;390.0;160.0;10.0;730.0;10.0;730.0;30.0</additional_attributes>
+  </element>
+</diagram>
